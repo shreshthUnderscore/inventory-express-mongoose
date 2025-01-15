@@ -27,8 +27,13 @@ app.get("/category", async (req, res) => {
 
 app.get("/category/:categoryId", async (req, res) => {
   const { categoryId } = req.params;
-  const categoryItems = await Item.find({ category: `${categoryId}` });
-  res.render("category/productDetails", { categoryItems });
+  const categoryItems = await Item.find({ category: `${categoryId}` })
+    .populate("category")
+    .exec();
+  const categoryObject = await Category.findById(categoryId);
+  const categoryName = categoryObject.name;
+
+  res.render("category/productDetails", { categoryItems, categoryName });
 });
 
 const PORT = process.env.PORT || 3000;

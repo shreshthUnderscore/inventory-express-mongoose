@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= categoryItems.itemName %></title>
+    <title><%= categoryName %></title>
   </head>
   <body>
+    <h1>Product Details</h1>
     <ul>
+      <% categoryItems.forEach((item)=>{ %>
       <li>
-        <h1><%= categoryItems.itemName%></h1>
-        <span><%= categoryItems.category %> <%= categoryItems.amount %></span>
+        <h1><%= item.itemName %></h1>
+        <span>Price: <%= item.price %></span>
       </li>
+      <% }) %>
     </ul>
   </body>
 </html>
