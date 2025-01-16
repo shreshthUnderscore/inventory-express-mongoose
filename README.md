@@ -1,5 +1,5 @@
 - [x] display all items in a category
-- [] create new category
+- [x] create new category
 - [] update category
 - [] delete category
 - [] create item

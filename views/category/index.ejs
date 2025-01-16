@@ -11,5 +11,9 @@
       <li><a href="/category/<%= element.id %>"><%= element.name%></a></li>
       <% }); %>
     </ul>
+    <form action="/category" method="post">
+      <input type="text" name="name" />
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
