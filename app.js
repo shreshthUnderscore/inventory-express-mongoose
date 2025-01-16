@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { Item, Category } = require("./models/models");
+const categoryRouter = require("./routes/categoryRouter");
 const path = require("path");
 
 const app = express();
@@ -20,21 +21,7 @@ app.use(express.json());
 // localhost/categoryName -> shows all items | display GET create POST delete DELETE and update PUT
 // localhost/categoryName/itemId -> show specific item |  display GET create POST delete DELETE and update PUT
 
-app.get("/category", async (req, res) => {
-  const categories = await Category.find({});
-  res.render("category/index", { categories });
-});
-
-app.get("/category/:categoryId", async (req, res) => {
-  const { categoryId } = req.params;
-  const categoryItems = await Item.find({ category: `${categoryId}` })
-    .populate("category")
-    .exec();
-  const categoryObject = await Category.findById(categoryId);
-  const categoryName = categoryObject.name;
-
-  res.render("category/productDetails", { categoryItems, categoryName });
-});
+app.use("/category", categoryRouter);
 
 const PORT = process.env.PORT || 3000;
 
