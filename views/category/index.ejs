@@ -8,7 +8,10 @@
   <body>
     <ul>
       <% categories.forEach(element => { %>
-      <li><a href="/category/<%= element.id %>"><%= element.name%></a></li>
+      <li>
+        <a href="/category/<%= element.id %>"><%= element.name%></a>
+        <a href="/category/<%=element.id%>/edit">Edit</a>
+      </li>
       <% }); %>
     </ul>
     <form action="/category" method="post">

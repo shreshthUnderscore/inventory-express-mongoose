@@ -19,8 +19,26 @@ const createCategory = async function (req, res) {
   res.redirect("/category");
 };
 
+const editCategory = async function (req, res) {
+  const { categoryId } = req.params;
+  const categoryObj = await Category.findById(categoryId);
+  const categoryName = categoryObj.name;
+  res.render("category/edit", { title: "Edit", categoryName, categoryId });
+};
+
+const updateCategory = async function (req, res) {
+  const newName = req.body.name;
+  const { categoryId } = req.params;
+  const categoryObj = await Category.findById(categoryId);
+  categoryObj.name = newName;
+  await categoryObj.save();
+  res.redirect("/category");
+};
+
 module.exports = {
   displayCategories,
   displayCategoryItems,
   createCategory,
+  editCategory,
+  updateCategory,
 };
