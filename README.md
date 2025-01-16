@@ -1,7 +1,7 @@
 - [x] display all items in a category
 - [x] create new category
 - [x] update category
-- [] delete category
-- [] create item
-- [] update item
-- [] delete item
+- [ ] delete category
+- [ ] create item
+- [ ] update item
+- [ ] delete item
