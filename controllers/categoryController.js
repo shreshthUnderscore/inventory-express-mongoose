@@ -35,10 +35,17 @@ const updateCategory = async function (req, res) {
   res.redirect("/category");
 };
 
+const deleteCategory = async function (req, res) {
+  const { categoryId } = req.params;
+  await Category.findByIdAndDelete(categoryId);
+  res.redirect("/category");
+};
+
 module.exports = {
   displayCategories,
   displayCategoryItems,
   createCategory,
   editCategory,
   updateCategory,
+  deleteCategory,
 };

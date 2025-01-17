@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Item, Category } = require("./models/models");
 const categoryRouter = require("./routes/categoryRouter");
 const path = require("path");
-
+const methodOverride = require("method-override");
 const app = express();
 
 main().catch((err) => console.log(err));
@@ -12,6 +12,7 @@ async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/inventoryExpress");
 }
 
+app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));

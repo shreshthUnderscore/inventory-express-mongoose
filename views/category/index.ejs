@@ -11,9 +11,11 @@
       <li>
         <a href="/category/<%= element.id %>"><%= element.name%></a>
         <a href="/category/<%=element.id%>/edit">Edit</a>
+        <a href="/category/<%=element.id%>/delete">Delete</a>
       </li>
       <% }); %>
     </ul>
+
     <form action="/category" method="post">
       <input type="text" name="name" />
       <button type="submit">Submit</button>
