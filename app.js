@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { Item, Category } = require("./models/models");
 const categoryRouter = require("./routes/categoryRouter");
+const productRouter = require("./routes/productRouter");
 const path = require("path");
 const methodOverride = require("method-override");
 const app = express();
@@ -22,7 +23,11 @@ app.use(express.json());
 // localhost/categoryName -> shows all items | display GET create POST delete DELETE and update PUT
 // localhost/categoryName/itemId -> show specific item |  display GET create POST delete DELETE and update PUT
 
+app.get("/", (req, res) => {
+  res.render("index");
+});
 app.use("/category", categoryRouter);
+app.use("/products", productRouter);
 
 const PORT = process.env.PORT || 3000;
 

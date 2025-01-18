@@ -2,6 +2,7 @@
 - [x] create new category
 - [x] update category
 - [x] delete category
+- [x] display all items
 - [ ] create item
 - [ ] update item
 - [ ] delete item
