@@ -3,6 +3,6 @@
 - [x] update category
 - [x] delete category
 - [x] display all items
-- [ ] create item
+- [x] create item
 - [ ] update item
 - [ ] delete item

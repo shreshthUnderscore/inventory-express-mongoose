@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/products" method="post">
+      <label for="item-name">Item Name:</label>
+      <input id="item-name" type="text" name="itemName" />
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <% data.forEach(data => {%>
+        <option value="<%= data.name %>"><%= data.name%></option>
+        <%}); %>
+      </select>
+      <label for="price">Price:</label>
+      <input id="price" name="price" type="number" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
