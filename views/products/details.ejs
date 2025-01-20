@@ -10,5 +10,8 @@
     <p><%=object.category.name%></p>
     <p>₹<%=object.price%></p>
     <a href="/products/<%= id %>/edit">Edit Product</a>
+    <form action="/products/<%= object._id %>?_method=DELETE" method="POST">
+      <button>Delete Item</button>
+    </form>
   </body>
 </html>

@@ -4,5 +4,5 @@
 - [x] delete category
 - [x] display all items
 - [x] create item
-- [ ] update item
-- [ ] delete item
+- [x] update item
+- [x] delete item
