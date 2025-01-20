@@ -8,7 +8,7 @@ const showAllProducts = async function (req, res) {
 const productDetails = async function (req, res) {
   const { productId } = req.params;
   const productObj = await Item.findById(productId).populate("category");
-  res.render("products/details", { object: productObj });
+  res.render("products/details", { object: productObj, id: productId });
 };
 
 const newProduct = async function (req, res) {
@@ -18,9 +18,24 @@ const newProduct = async function (req, res) {
 
 const createProduct = async function (req, res) {
   const { itemName, category, price } = req.body;
-  const categoryId = await Category.find({ name: category }, "_id");
-  await Item.create({ itemName, categoryId, price });
+  const categoryId = await Category.findOne({ name: category }, "_id");
+  await Item.create({ itemName, category: categoryId._id, price });
   res.redirect("/products");
+};
+
+const editProduct = async function (req, res) {
+  const { productId } = req.params;
+  const categories = await Category.find({});
+  const product = await Item.findById(productId);
+  res.render("products/edit", { id: productId, data: product, categories });
+};
+
+const updateProduct = async function (req, res) {
+  const { itemName, category, price } = req.body;
+  const { productId } = req.params;
+  const categoryId = await Category.findOne({ name: category }, "_id");
+  await Item.findByIdAndUpdate(productId, { itemName, categoryId, price });
+  res.redirect(`/products/${productId}`);
 };
 
 module.exports = {
@@ -28,4 +43,6 @@ module.exports = {
   productDetails,
   newProduct,
   createProduct,
+  editProduct,
+  updateProduct,
 };
